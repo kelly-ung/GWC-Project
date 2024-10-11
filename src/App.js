@@ -18,7 +18,6 @@ export default function App() {
                         <Route path='/Explore' element={<Explore />} />
                 </Routes>
             </div>
-            <Csv />
         </div>
     );
 }

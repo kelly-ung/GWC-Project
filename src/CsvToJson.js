@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-const CsvToJson = () => {
+const CsvToJson = ({address}) => {
   const [data, setData] = useState([]);
+  const [found, setFound] = useState([]);
   const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSa05FqW_RcHpLANcN1veZxu5z4sHPWsa6_phdBrX7SC0dO5NEcjPWYuJR4qaFIhgk-gEdsHYTyNVFo/pub?output=csv';
 
   useEffect(() => {
     fetchCsvData();
   }, []);
+
+  useEffect(() => {
+    cityFinder(); // Call cityFinder whenever address updates
+  }, [address]);
 
   const fetchCsvData = async () => {
     try {
@@ -37,10 +42,28 @@ const CsvToJson = () => {
     return jsonData;
   };
 
+  const cityFinder = () => {
+    let current;
+    let results = [];
+    for (let i = 0; i < data.length; i++) {
+      current = data.length > 0 ? JSON.stringify(data[i]["Address"], null, 2) : 'No data available';
+      current = current.toLowerCase();
+      address = address.toLowerCase();
+      if (current.includes(address)) {
+        results.push(current);
+      }
+    }
+    setFound(results);
+  }
+  
+
   return (
     <div>
       <h1>CSV to JSON Data</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      {/* <pre>{data.length > 0 ? JSON.stringify(data[1]["Address"], null, 2) : 'No data available'}</pre> */}
+      {/* <pre>{current}</pre> */}
+      {found}
     </div>
   );
 };

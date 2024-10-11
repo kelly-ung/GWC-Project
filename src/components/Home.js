@@ -1,25 +1,29 @@
 import './Home.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import CsvToJson from '../CsvToJson';
 
 export default function Home() {
     const [input, setInput] = useState('')
 
-
+    const handleSubmit = () => {
+        setInput(input);
+    };
 
     return (
         <div>
-            <h1>Home</h1>
-            <p>Welcome Try out our food finder by entering zip code or address</p>
+            <h1>Welcome</h1>
+            <p>Try out our food finder by entering zip code or address</p>
 
             <form>
                 <input
                     type='text'
-                    input={input}
+                    value={input}
                     onChange={e => setInput(e.target.value)}
-                    placeholder='Enter ZIP?...'
+                    placeholder='Enter City?...'
                 />
-                <button type='submit'>Search</button>
+                <button type='submit' onClick={handleSubmit}>Search</button>
             </form>
+            <CsvToJson address={input}/>
         </div>
     );
 };
