@@ -67,26 +67,28 @@ export default function Home() {
     return (
         <div>
             <h1>Welcome</h1>
-            <p>Try out our food finder by entering zip code or address</p>
+            <p>Try out our food assistance finder to locate places near you.</p>
 
             <form onSubmit={handleSubmit}>
-                <input
-                    type='text'
-                    value={input}
-                    onChange={e => setInput(e.target.value)}
-                    placeholder='Enter City?...'
-                />
-                <button type='submit'>Search</button>
+                <div className='search-input'>
+                    <input className='search-bar'
+                        type='text'
+                        value={input}
+                        onChange={e => setInput(e.target.value)}
+                        placeholder='Enter zip code or city...'
+                    />
+                    <button className='search-button' type='submit'>Search</button>
+                </div>
             </form>
             
             {results.map((item, index) => (
-                <div key={index}>
-                <h3>Name: {item.Name}</h3>
-                <p>Address: {item.Address}</p>
-                <p>Phone: {item.Phone}</p>
-                <p>Website: <a href={item.Website} target="_blank" rel="noopener noreferrer">{item.Website}</a></p>
-                <p>Type: {item.Type}</p>
-                <p>Notes: {item.Notes}</p>
+                <div className='container' key={index}>
+                    <h4 className='result-name'>Name: {item.Name}</h4>
+                    <li className="result-info">Address: {item.Address}</li>
+                    <li className="result-info">Phone: {item.Phone}</li>
+                    <li className="result-info">Website: <a href={item.Website} target="_blank" rel="noopener noreferrer">{item.Website}</a></li>
+                    <li className="result-info">Type: {item.Type}</li>
+                    <li className="result-info">Notes: {item.Notes}</li>
                 </div>
             ))}
         </div>
