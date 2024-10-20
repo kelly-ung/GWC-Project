@@ -17,7 +17,7 @@ export default function Map() {
         // custom marker icon
         var myIcon = L.icon({
             iconUrl: markerIcon,
-            iconSize: [38, 95],
+            iconSize: [50, 50],
             iconAnchor: [22, 94],
             popupAnchor: [-3, -76],
         });
