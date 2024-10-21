@@ -77,6 +77,17 @@ export default function Home() {
                         onChange={e => setInput(e.target.value)}
                         placeholder='Enter zip code or city...'
                     />
+                 
+                <div class="dropdown">
+                <button class="dropbtn">Assistance Type</button>
+                <div class="dropdown-content">
+                    <button class="save-button" onclick="saveInput()">Food Pantry </button>
+                    <button class="save-button" onclick="saveInput()">Church</button>
+                    <button class="save-button" onclick="saveInput()">Affordable Grocery</button>
+                </div>
+                </div>
+
+
                     <button className='search-button' type='submit'>Search</button>
                 </div>
             </form>
