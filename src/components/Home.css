@@ -58,12 +58,12 @@
 }
 
 .dropbtn {
-    background-color: rgb(77, 31, 131);
+    background-color: rgb(210, 48, 99);
     color: white;
     padding: 12px;
     font-size: 16px;
-    border: outset;
-    border-color: black;
+    border: 1px solid black;
+    border-radius: 10px; 
 }
 
 .dropdown {
