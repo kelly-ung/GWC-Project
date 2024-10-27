@@ -52,30 +52,40 @@ export default function Map() {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
         
-    // custom marker icon
-    var myIcon = L.icon({
-        iconUrl: markerIcon,
-        iconSize: [50, 50],
-        iconAnchor: [22, 94],
-        popupAnchor: [-3, -76],
-    });
+        // custom marker icon
+        var myIcon = L.icon({
+            iconUrl: markerIcon,
+            iconSize: [50, 50],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76],
+        });
 
-    const createMarkers = () => {
-        let currentLatitude;
-        let currentLongitude;
-        for (let i = 0; i < data.length; i++) {
-            currentLatitude = data.length > 0 ? data[i]["Latitude"] : 'No data available';
-            currentLongitude = data.length > 0 ? data[i]["Longitude"] : 'No data available';
-            L.marker([currentLatitude, currentLongitude], {icon: myIcon}).addTo(map);
+        const createMarkers = () => {
+            for (let i = 0; i < data.length; i++) {
+                let latitude = data.length > 0 ? data[i]["Latitude"] : 'No data available';
+                let longitude = data.length > 0 ? data[i]["Longitude"] : 'No data available';
+                var marker = L.marker([latitude, longitude], {icon: myIcon}).addTo(map);
+
+                // adding popup information 
+                let name = data.length > 0 ? data[i]["Name"] : 'No data available';
+                let address = data.length > 0 ? data[i]["Address"] : 'No data available';
+                let phone = data.length > 0 ? data[i]["Phone"] : 'No data available';
+                let website = data.length > 0 ? data[i]["Website"] : 'No data available';
+                marker.bindPopup(`
+                    <b>${name}</b>
+                    <br>${address}
+                    <br>${phone}
+                    <br><a href="${website}" target="_blank" rel="noopener noreferrer">${website}</a>
+                `).openPopup();
+            }
         }
-    }
-    createMarkers();
+        createMarkers();
     
-    // Cleanup function
-    return () => {
-        map.remove();
-    };
-    }, []);
+        // Cleanup function
+        return () => {
+            map.remove();
+        };
+    }, [data]);
 
 
 

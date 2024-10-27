@@ -125,16 +125,21 @@ export default function Home() {
                 </div>
             </form>
             
-            {results.map((item, index) => (
-                <div className='container' key={index}>
-                    <h4 className='result-name'>Name: {item.Name}</h4>
-                    <li className="result-info">Address: {item.Address}</li>
-                    <li className="result-info">Phone: {item.Phone}</li>
-                    <li className="result-info">Website: <a href={item.Website} target="_blank" rel="noopener noreferrer">{item.Website}</a></li>
-                    <li className="result-info">Type: {item.Type}</li>
-                    <li className="result-info">Notes: {item.Notes}</li>
-                </div>
-            ))}
+            {results && results.length > 0 ? 
+                (results.map((item, index) => (
+                    <div className='container' key={index}>
+                        <h4 className='result-name'>Name: {item.Name}</h4>
+                        <li className="result-info">Address: {item.Address}</li>
+                        <li className="result-info">Phone: {item.Phone}</li>
+                        <li className="result-info">Website: <a href={item.Website} target="_blank" rel="noopener noreferrer">{item.Website}</a></li>
+                        <li className="result-info">Type: {item.Type}</li>
+                        <li className="result-info">Notes: {item.Notes}</li>
+                    </div>
+                )))
+                :
+                <p>No results found. Please check your spelling or try a different keyword or filter.</p>
+            }
+            
         </div>
     );
 };
