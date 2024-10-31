@@ -18,7 +18,7 @@ export default function Navbar({ user }) {
                 </li>
     
                 <li>
-                    <Link to='/Explore'>Explore</Link>
+                    <Link to='/Suggestions'>Suggestions</Link>
                 </li>
             </ul>
         </nav>

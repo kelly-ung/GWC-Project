@@ -1,0 +1,11 @@
+.form {
+    position: center;
+    left: 40px;
+    top: 100px;
+    font-size: 24px;
+}
+
+.form iframe {
+    overflow: hidden;
+    border: none;
+}

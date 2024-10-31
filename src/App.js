@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Map from './components/Map';
-import Explore from './components/Explore';
+import Suggestions from './components/Suggestions';
 
 export default function App() {
     return (
@@ -14,7 +14,7 @@ export default function App() {
                         <Route path='/' element={<Home />} />
                         <Route path='/Home' element={<Home />} />
                         <Route path='/Map' element={<Map />} />
-                        <Route path='/Explore' element={<Explore />} />
+                        <Route path='/Suggestions' element={<Suggestions />} />
                 </Routes>
             </div>
         </div>
