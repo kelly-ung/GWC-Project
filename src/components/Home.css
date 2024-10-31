@@ -1,3 +1,7 @@
+.home-page {
+    max-width: 860px; 
+}
+
 .search-input {
     display: flex;
     gap: 5px; 
@@ -33,7 +37,7 @@
 .container {
     color: black;
     max-width: 560px; 
-    margin: 20px 0;    
+    margin: 20px auto;   
     padding: 25px;    
     text-align: left;  
     border: 3px solid black;
