@@ -2,9 +2,19 @@ body {
     margin: 0;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+}
+
 .site-title {
     color: white;
     font-size: 1.5rem;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
 }
 
 .nav {
@@ -39,4 +49,3 @@ body {
 .nav li:hover {
     color: rgba(255, 255, 255, 0.7);
 }
-
