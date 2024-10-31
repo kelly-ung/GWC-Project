@@ -6,6 +6,7 @@ export default function Home() {
     const [results, setResults] = useState([]);
     const [data, setData] = useState([]);
     const [filter, setFilter] = useState('');
+    const [searchClicked, setSearchClicked] = useState(false);
 
 
     const SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSa05FqW_RcHpLANcN1veZxu5z4sHPWsa6_phdBrX7SC0dO5NEcjPWYuJR4qaFIhgk-gEdsHYTyNVFo/pub?output=csv';
@@ -66,6 +67,7 @@ export default function Home() {
     const handleSubmit = (e) => {
         e.preventDefault();
         cityFinder();
+        setSearchClicked(true);
     }
 
     const handleFilter = (option) => {
@@ -125,21 +127,24 @@ export default function Home() {
                 </div>
             </form>
             
-            {results && results.length > 0 ? 
-                (results.map((item, index) => (
-                    <div className='container' key={index}>
-                        <h4 className='result-name'>Name: {item.Name}</h4>
-                        <li className="result-info">Address: {item.Address}</li>
-                        <li className="result-info">Phone: {item.Phone}</li>
-                        <li className="result-info">Website: <a href={item.Website} target="_blank" rel="noopener noreferrer">{item.Website}</a></li>
-                        <li className="result-info">Type: {item.Type}</li>
-                        <li className="result-info">Notes: {item.Notes}</li>
-                    </div>
-                )))
+            {searchClicked ?
+                (results && results.length > 0 ? 
+                    (results.map((item, index) => (
+                        <div className='container' key={index}>
+                            <h4 className='result-name'>Name: {item.Name}</h4>
+                            <li className="result-info">Address: {item.Address}</li>
+                            <li className="result-info">Phone: {item.Phone}</li>
+                            <li className="result-info">Website: <a href={item.Website} target="_blank" rel="noopener noreferrer">{item.Website}</a></li>
+                            <li className="result-info">Type: {item.Type}</li>
+                            <li className="result-info">Notes: {item.Notes}</li>
+                        </div>
+                    )))
+                    :
+                    <p>No results found. Please check your spelling or try a different keyword or filter.</p>
+                )
                 :
-                <p>No results found. Please check your spelling or try a different keyword or filter.</p>
+                null
             }
-            
         </div>
     );
 };
