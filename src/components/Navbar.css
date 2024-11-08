@@ -49,3 +49,25 @@ body {
 .nav li:hover {
     color: rgba(255, 255, 255, 0.7);
 }
+
+.dark {
+    background-color: black;
+    color: white;
+    width: 100px;
+    height: 40px; 
+    padding: 0 10px;
+    font-size: 13px; 
+    border: 1px solid white;
+    border-radius: 30px;  
+}
+
+.light {
+    background-color: white;
+    color: black;
+    width: 100px;
+    height: 40px; 
+    padding: 0 10px;
+    font-size: 13px; 
+    border: 1px solid black;
+    border-radius: 30px;  
+}
