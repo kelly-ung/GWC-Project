@@ -97,7 +97,7 @@ export default function Home() {
 
     return (
         <div className='home-page'>
-            <h1>A Food Finder to Connect You to Nourishment and Gain Food Security</h1>
+            <h2>A Food Finder to Connect You to Nourishment and Gain Food Security</h2>
             <p>Access food assistance establishments in Orange County, California.</p>
 
             <form onSubmit={handleSubmit}>
