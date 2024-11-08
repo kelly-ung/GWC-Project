@@ -13,20 +13,23 @@ body {
 }
 
 .logo {
-    width: 70px;
+    width: 60px;
     height: auto;
 }
 
 .nav {
+    position: sticky;
+    top: 0;
     background-color: black;
     color: white;
     display: flex;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center; 
     gap: 2rem;
     padding: 0 3rem;
     padding-top: 0.5rem;
     padding-bottom: 0.2rem;
+    z-index: 1000;
 }
 
 .nav ul {

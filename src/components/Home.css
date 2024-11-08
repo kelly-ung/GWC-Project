@@ -2,6 +2,10 @@
     max-width: 860px; 
 }
 
+p {
+    font-size: 25px;
+}
+
 .search-input {
     display: flex;
     gap: 5px; 
