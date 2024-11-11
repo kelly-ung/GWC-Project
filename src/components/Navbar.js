@@ -1,6 +1,6 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom';
-import logo from './images/orange-logo.png';
+import logo from './images/orangeC.png';
 
 export default function Navbar({ mode, setMode }) {
     const handleClick = () => {
