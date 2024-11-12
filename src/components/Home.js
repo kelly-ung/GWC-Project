@@ -102,43 +102,49 @@ export default function Home() {
 
             <form onSubmit={handleSubmit}>
                 <div className='search-input'>
-                    <input className='search-bar'
+                    <input 
+                        className='search-bar'
                         type='text'
                         value={input}
                         onChange={e => setInput(e.target.value)}
                         placeholder='Enter zip code or city...'
                     />
-                 
-                <div className="dropdown">
-                <button className="dropbtn">{filter !== '' ? filter : "Assistance Type"}</button>
-                <div className="dropdown-content">
-                    <button className="save-button" onClick={() => handleFilter("None")}>None </button>
-                    <button className="save-button" onClick={() => handleFilter("Food Pantry")}>Food Pantry </button>
-                    <button className="save-button" onClick={() => handleFilter("Food Bank")}>Food Bank </button>
-                    <button className="save-button" onClick={() => handleFilter("Church")}>Church </button>
-                    <button className="save-button" onClick={() => handleFilter("Affordable Grocery")}>Affordable Grocery </button>
-                    <button className="save-button" onClick={() => handleFilter("Distribution Center")}>Distribution Center </button>
-                    <button className="save-button" onClick={() => handleFilter("Soup Kitchen")}>Soup Kitchen </button>
-                </div>
-                </div>
-
-
+                    <div className="dropdown">
+                        <button className="dropbtn">
+                            {filter !== '' ? filter : "Assistance Type"}
+                        </button>
+                        <div className="dropdown-content">
+                            <button className="save-button" onClick={() => handleFilter("None")}>None</button>
+                            <button className="save-button" onClick={() => handleFilter("Food Pantry")}>Food Pantry</button>
+                            <button className="save-button" onClick={() => handleFilter("Food Bank")}>Food Bank</button>
+                            <button className="save-button" onClick={() => handleFilter("Church")}>Church</button>
+                            <button className="save-button" onClick={() => handleFilter("Affordable Grocery")}>Affordable Grocery</button>
+                            <button className="save-button" onClick={() => handleFilter("Distribution Center")}>Distribution Center</button>
+                            <button className="save-button" onClick={() => handleFilter("Soup Kitchen")}>Soup Kitchen</button>
+                        </div>
+                    </div>
                     <button className='search-button' type='submit'>Search</button>
                 </div>
             </form>
-            
+
             {searchClicked ?
-                (results && results.length > 0 ? 
-                    (results.map((item, index) => (
-                        <div className='container' key={index}>
-                            <h4 className='result-name'>Name: {item.Name}</h4>
-                            <li className="result-info">Address: {item.Address}</li>
-                            <li className="result-info">Phone: {item.Phone}</li>
-                            <li className="result-info">Website: <a href={item.Website} target="_blank" rel="noopener noreferrer">{item.Website}</a></li>
-                            <li className="result-info">Type: {item.Type}</li>
-                            <li className="result-info">Notes: {item.Notes}</li>
-                        </div>
-                    )))
+                (results && results.length > 0 ?
+                    <div className="results-container">
+                        {results.map((item, index) => (
+                            <div className="container" key={index}>
+                                <h4 className="result-name">{item.Name}</h4>
+                                <ul>
+                                    <li className="result-info">Address: {item.Address}</li>
+                                    <li className="result-info">Phone: {item.Phone}</li>
+                                    <li className="result-info">
+                                        Website: <a href={item.Website} target="_blank" rel="noopener noreferrer">{item.Website}</a>
+                                    </li>
+                                    <li className="result-info">Classification: {item.Type}</li>
+                                    <li className="result-info">Notes: {item.Notes}</li>
+                                </ul>
+                            </div>
+                        ))}
+                    </div>
                     :
                     <p>No results found. Please check your spelling or try a different keyword or filter.</p>
                 )
@@ -147,6 +153,4 @@ export default function Home() {
             }
         </div>
     );
-};
-
-
+}
